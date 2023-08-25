@@ -18,6 +18,34 @@ KEY_LABELS = ['A major', 'Bb major', 'B major', 'C major', 'Db major',
               'C minor', 'C# minor', 'D minor', 'D# minor', 'E minor',
               'F minor', 'F# minor', 'G minor', 'G# minor']
 
+KEY_DICT = {
+    0: 'major a',
+    1: 'major a#',
+    2: 'major b',
+    3: 'major c',
+    4: 'major c#',
+    5: 'major d',
+    6: 'major d#',
+    7: 'major e',
+    8: 'major f',
+    9: 'major f#',
+    10: 'major g',
+    11: 'major g#',
+    12: 'minor a',
+    13: 'minor a#',
+    14: 'minor b',
+    15: 'minor c',
+    16: 'minor c#',
+    17: 'minor d',
+    18: 'minor d#',
+    19: 'minor e',
+    20: 'minor f',
+    21: 'minor f#',
+    22: 'minor g',
+    23: 'minor g#',
+    -1: ""
+}
+
 
 def key_prediction_to_label(prediction):
     """
@@ -36,7 +64,7 @@ def key_prediction_to_label(prediction):
     """
     prediction = np.atleast_2d(prediction)
     key_index = prediction[0].argmax()
-    return key_index, KEY_LABELS[key_index]
+    return KEY_DICT[key_index]
 
 
 def add_axis(x):
