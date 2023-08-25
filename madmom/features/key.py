@@ -85,7 +85,7 @@ class CNNKeyRecognitionProcessor(SequentialProcessor):
         from ..models import KEY_CNN
 
         # spectrogram computation
-        sig = SignalProcessor(num_channels=1)
+        sig = SignalProcessor(num_channels=1, sample_rate=22050)
         frames = FramedSignalProcessor(frame_size=8192, fps=5)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         spec = LogarithmicFilteredSpectrogramProcessor(
