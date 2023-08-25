@@ -757,7 +757,7 @@ def load_audio_file(filename, sample_rate=None, num_channels=None,
                               num_channels=num_channels, channel=channel,
                               start=start, stop=stop, dtype=dtype)
     except ValueError:
-        pass
+        raise
     # not a wave file (or other sample rate requested), try ffmpeg
     try:
         return load_ffmpeg_file(filename, sample_rate=sample_rate,
@@ -784,7 +784,7 @@ def load_audio_file(filename, sample_rate=None, num_channels=None,
             else:
                 raise
         except subprocess.CalledProcessError:
-            pass
+            raise
     except subprocess.CalledProcessError:
-        pass
+        raise
     raise LoadAudioFileError(error)
