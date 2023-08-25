@@ -35,7 +35,8 @@ def key_prediction_to_label(prediction):
 
     """
     prediction = np.atleast_2d(prediction)
-    return KEY_LABELS[prediction[0].argmax()]
+    key_index = prediction[0].argmax()
+    return key_index, KEY_LABELS[key_index]
 
 
 def add_axis(x):
