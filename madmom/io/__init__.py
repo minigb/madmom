@@ -530,6 +530,6 @@ def write_tempo(tempi, filename, delimiter='\t', header=None, mirex=None):
         if t1 > t2:
             t1, t2, strength = t2, t1, 1. - strength
     # format as a numpy array and write to output
-    out = np.array([t1, t2, strength], ndmin=2)
-    write_events(out, filename, fmt=['%.2f', '%.2f', '%.2f'],
+    out = np.array([t1], ndmin=2)
+    write_events(out, filename, fmt=['%.2f'],
                  delimiter=delimiter, header=header)
