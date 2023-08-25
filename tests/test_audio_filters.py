@@ -16,7 +16,7 @@ from madmom.audio.filters import *
 # Mel frequency scale
 HZ = np.asarray([20, 258.7484, 576.6645, 1000])
 MEL = np.asarray([31.749, 354.5, 677.25, 1000])
-FFT_FREQS_1024 = np.fft.fftfreq(2048, 1. / 44100)[:1024]
+FFT_FREQS_1024 = np.fft.fftfreq(2048, 1. / 22050)[:1024]
 LOG_FILTERBANK_CENTER_FREQS = np.array(
     [43.066406, 64.5996093, 86.1328125, 107.6660156, 129.199218, 150.732421,
      172.265625, 193.798828, 215.332031, 236.865234, 258.398437, 279.931640,
@@ -883,7 +883,7 @@ class TestMelFilterbankClass(unittest.TestCase):
                                      [9200, 16980]]))
 
     def test_default_values(self):
-        filt = MelFilterbank(np.fft.fftfreq(2048, 1. / 44100)[:1024])
+        filt = MelFilterbank(np.fft.fftfreq(2048, 1. / 22050)[:1024])
         center = [86.132812, 150.732422, 215.332031, 279.931640,
                   366.064453, 452.197266, 538.330078, 645.996094,
                   753.662109, 882.861328, 990.527344, 1141.259766,

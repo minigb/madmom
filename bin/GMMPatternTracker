@@ -76,7 +76,7 @@ def main():
 
     # set immutable defaults
     args.num_channels = 1
-    args.sample_rate = 44100
+    args.sample_rate = 22050
     args.fps = 50
     args.num_bands = 12
     args.fmin = 30

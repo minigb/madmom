@@ -47,23 +47,23 @@ class TestLoadWaveFileFunction(unittest.TestCase):
         self.assertTrue(np.allclose(signal[:5],
                                     [-2494, -2510, -2484, -2678, -2833]))
         self.assertTrue(len(signal) == 123481)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (123481,))
         # stereo
         signal, sample_rate = load_wave_file(stereo_sample_file)
         self.assertTrue(np.allclose(signal[:4],
                                     [[33, 38], [35, 36], [29, 34], [36, 31]]))
         self.assertTrue(len(signal) == 182919)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (182919, 2))
 
     def test_start_stop(self):
         # test wave loader
-        signal, sample_rate = load_wave_file(sample_file, start=1. / 44100,
-                                             stop=5. / 44100)
+        signal, sample_rate = load_wave_file(sample_file, start=1. / 22050,
+                                             stop=5. / 22050)
         self.assertTrue(np.allclose(signal, [-2510, -2484, -2678, -2833]))
         self.assertTrue(len(signal) == 4)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
 
     def test_downmix(self):
         # test wave loader
@@ -72,7 +72,7 @@ class TestLoadWaveFileFunction(unittest.TestCase):
         self.assertTrue(np.allclose(signal[:5], [35, 35, 31, 33, 33]))
 
         self.assertTrue(len(signal) == 182919)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (182919,))
 
     def test_channel_choice(self):
@@ -89,7 +89,7 @@ class TestLoadWaveFileFunction(unittest.TestCase):
                                      [-2484, -2484], [-2678, -2678],
                                      [-2833, -2833]]))
         self.assertTrue(len(signal) == 123481)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (123481, 2))
 
     def test_errors(self):
@@ -128,7 +128,7 @@ class TestWriteWaveFileFunction(unittest.TestCase):
     def test_values(self):
         # test wave loader
         self.assertTrue(np.allclose(self.signal, self.result))
-        self.assertTrue(self.result.sample_rate == 44100)
+        self.assertTrue(self.result.sample_rate == 22050)
         self.assertTrue(self.result.shape == (123481,))
 
 
@@ -173,21 +173,21 @@ class TestLoadAudioFileFunction(unittest.TestCase):
         self.assertTrue(np.allclose(signal[:5],
                                     [-2494, -2510, -2484, -2678, -2833]))
         self.assertTrue(len(signal) == 123481)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (123481,))
         # stereo
         signal, sample_rate = load_audio_file(stereo_sample_file)
         self.assertTrue(np.allclose(signal[:4],
                                     [[33, 38], [35, 36], [29, 34], [36, 31]]))
         self.assertTrue(len(signal) == 182919)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (182919, 2))
         # test ffmpeg loader
         signal, sample_rate = load_audio_file(stereo_sample_file)
         self.assertTrue(np.allclose(signal[:4],
                                     [[33, 38], [35, 36], [29, 34], [36, 31]]))
         self.assertTrue(len(signal) == 182919)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (182919, 2))
 
     def test_wave_channel_selection(self):
@@ -197,18 +197,18 @@ class TestLoadAudioFileFunction(unittest.TestCase):
 
     def test_start_stop(self):
         # test wave loader
-        signal, sample_rate = load_audio_file(sample_file, start=1. / 44100,
-                                              stop=5. / 44100)
+        signal, sample_rate = load_audio_file(sample_file, start=1. / 22050,
+                                              stop=5. / 22050)
         self.assertTrue(np.allclose(signal, [-2510, -2484, -2678, -2833]))
         self.assertTrue(len(signal) == 4)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         # test ffmpeg loader
         signal, sample_rate = load_audio_file(stereo_sample_file,
-                                              start=1. / 44100,
-                                              stop=4. / 44100)
+                                              start=1. / 22050,
+                                              stop=4. / 22050)
         self.assertTrue(np.allclose(signal, [[35, 36], [29, 34], [36, 31]]))
         self.assertTrue(len(signal) == 3)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
 
     def test_downmix(self):
         # test wave loader
@@ -217,7 +217,7 @@ class TestLoadAudioFileFunction(unittest.TestCase):
         self.assertTrue(np.allclose(signal[:5],
                                     [35, 35, 31, 33, 33]))
         self.assertTrue(len(signal) == 182919)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (182919,))
         # test ffmpeg loader
         signal, sample_rate = load_audio_file(stereo_sample_file,
@@ -226,7 +226,7 @@ class TestLoadAudioFileFunction(unittest.TestCase):
         self.assertTrue(np.allclose(signal[:5], [35, 35, 31, 33, 33], atol=1))
         # avconv results in a different length of 182909 samples
         self.assertTrue(np.allclose(len(signal), 182919, atol=10))
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         # test clipping
         f = pj(AUDIO_PATH, 'stereo_chirp.wav')
         signal, _ = load_audio_file(f, num_channels=1)
@@ -245,7 +245,7 @@ class TestLoadAudioFileFunction(unittest.TestCase):
                                      [-2484, -2484], [-2678, -2678],
                                      [-2833, -2833]]))
         self.assertTrue(len(signal) == 123481)
-        self.assertTrue(sample_rate == 44100)
+        self.assertTrue(sample_rate == 22050)
         self.assertTrue(signal.shape == (123481, 2))
 
     def test_resample(self):
@@ -283,7 +283,7 @@ class TestLoadAudioFileFunction(unittest.TestCase):
         data, sample_rate = load_audio_file(rg_flac_file,
                                             replaygain_mode='track')
         signal = Signal(data)
-        self.assertEqual(sample_rate, 44100)
+        self.assertEqual(sample_rate, 22050)
         # The FLAC file has an RG track gain of +8.39
         self.assertAlmostEqual(signal.spl() - original.spl(), 8.39, places=3)
 

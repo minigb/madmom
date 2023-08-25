@@ -768,7 +768,7 @@ class TestSignalClass(unittest.TestCase):
                                     [-2494, -2510, -2484, -2678, -2833]))
         self.assertTrue(len(result) == 123481)
         self.assertTrue(result.num_samples == 123481)
-        self.assertTrue(result.sample_rate == 44100)
+        self.assertTrue(result.sample_rate == 22050)
         self.assertTrue(result.num_channels == 1)
         self.assertTrue(result.ndim == 1)
         self.assertTrue(np.allclose(result.length, 2.8))
@@ -830,7 +830,7 @@ class TestSignalProcessorClass(unittest.TestCase):
         self.assertTrue(result.max() == 17977)
         self.assertTrue(result.mean() == -172.88385257650975)
         # attributes
-        self.assertTrue(result.sample_rate == 44100)
+        self.assertTrue(result.sample_rate == 22050)
         # properties
         self.assertTrue(result.num_samples == 123481)
         self.assertTrue(result.num_channels == 1)
@@ -858,7 +858,7 @@ class TestSignalProcessorClass(unittest.TestCase):
         self.assertTrue(result.max() == 28590)
         self.assertTrue(result.mean() == -274.92599671204476)
         # attributes
-        self.assertTrue(result.sample_rate == 44100)
+        self.assertTrue(result.sample_rate == 22050)
         # properties
         self.assertTrue(result.num_samples == 123481)
         self.assertTrue(result.num_channels == 1)
@@ -875,7 +875,7 @@ class TestSignalProcessorClass(unittest.TestCase):
                                     [-788, -793, -785, -846, -895]))
         self.assertTrue(len(result) == 123481)
         # attributes
-        self.assertTrue(result.sample_rate == 44100)
+        self.assertTrue(result.sample_rate == 22050)
         # properties
         self.assertTrue(result.num_samples == 123481)
         self.assertTrue(result.num_channels == 1)

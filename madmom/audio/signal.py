@@ -559,7 +559,7 @@ class Signal(np.ndarray):
     >>> sig
     Signal([-2494, -2510, ...,   655,   639], dtype=int16)
     >>> sig.sample_rate
-    44100
+    22050
 
     Load a stereo audio file, down-mix it to mono:
 

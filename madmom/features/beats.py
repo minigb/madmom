@@ -89,7 +89,7 @@ class RNNBeatProcessor(SequentialProcessor):
             frame_sizes = [1024, 2048, 4096]
             num_bands = 6
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=44100)
+        sig = SignalProcessor(num_channels=1, sample_rate=22050)
         # process the multi-resolution spec & diff in parallel
         multi = ParallelProcessor([])
         for frame_size in frame_sizes:
@@ -165,7 +165,7 @@ class TCNBeatProcessor(SequentialProcessor):
         if nn_files is None:
             nn_files = BEATS_TCN
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=44100)
+        sig = SignalProcessor(num_channels=1, sample_rate=22050)
         frames = FramedSignalProcessor(frame_size=2048, **kwargs)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         filt = FilteredSpectrogramProcessor(num_bands=12, fmin=30,
