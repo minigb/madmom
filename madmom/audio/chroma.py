@@ -254,7 +254,7 @@ class DeepChromaProcessor(SequentialProcessor):
         from ..audio.spectrogram import LogarithmicFilteredSpectrogramProcessor
         from madmom.ml.nn import NeuralNetworkEnsemble
         # signal pre-processing
-        sig = SignalProcessor(num_channels=1, sample_rate=44100)
+        sig = SignalProcessor(num_channels=1)
         frames = FramedSignalProcessor(frame_size=8192, fps=10)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         spec = LogarithmicFilteredSpectrogramProcessor(
