@@ -787,4 +787,5 @@ def load_audio_file(filename, sample_rate=None, num_channels=None,
             pass
     except subprocess.CalledProcessError:
         pass
+    error += ' Check if requested sample rate is different from the file sample rate.'
     raise LoadAudioFileError(error)
