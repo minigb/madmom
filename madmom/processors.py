@@ -860,7 +860,7 @@ def process_online(processor, infile, outfile, **kwargs):
     """
     from madmom.audio.signal import Stream, FramedSignal
     # set default values
-    kwargs['sample_rate'] = kwargs.get('sample_rate', 22050)
+    kwargs['sample_rate'] = kwargs.get('sample_rate', 44100)
     kwargs['num_channels'] = kwargs.get('num_channels', 1)
     # list all available PyAudio devices and exit afterwards
     if kwargs['list_stream_input_device']:

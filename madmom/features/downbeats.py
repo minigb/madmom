@@ -70,7 +70,7 @@ class RNNDownBeatProcessor(SequentialProcessor):
         from ..models import DOWNBEATS_BLSTM
 
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         # process the multi-resolution spec & diff in parallel
         multi = ParallelProcessor([])
         frame_sizes = [1024, 2048, 4096]
@@ -966,7 +966,7 @@ class RNNBarProcessor(Processor):
         from ..ml.nn import NeuralNetworkEnsemble
         from ..models import DOWNBEATS_BGRU
         # define percussive feature
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         frames = FramedSignalProcessor(frame_size=2048, fps=fps)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         spec = FilteredSpectrogramProcessor(

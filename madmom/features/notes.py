@@ -65,7 +65,7 @@ class RNNPianoNoteProcessor(SequentialProcessor):
         from ..ml.nn import NeuralNetwork
 
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         # process the multi-resolution spec & diff in parallel
         multi = ParallelProcessor([])
         for frame_size in [1024, 2048, 4096]:
@@ -298,7 +298,7 @@ class CNNPianoNoteProcessor(SequentialProcessor):
         from ..models import NOTES_CNN
         from ..ml.nn import NeuralNetworkEnsemble
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         frames = FramedSignalProcessor(frame_size=4096, fps=50)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         filt = FilteredSpectrogramProcessor(num_bands=24, fmin=30, fmax=10000)

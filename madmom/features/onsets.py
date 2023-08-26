@@ -774,7 +774,7 @@ class RNNOnsetProcessor(SequentialProcessor):
             frame_sizes = [1024, 2048, 4096]
 
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         # process the multi-resolution spec & diff in parallel
         multi = ParallelProcessor([])
         for frame_size in frame_sizes:
@@ -847,7 +847,7 @@ class CNNOnsetProcessor(SequentialProcessor):
         from ..ml.nn import NeuralNetwork
 
         # define pre-processing chain
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         # process the multi-resolution spec in parallel
         multi = ParallelProcessor([])
         for frame_size in [2048, 1024, 4096]:

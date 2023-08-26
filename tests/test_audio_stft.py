@@ -176,7 +176,7 @@ class ShortTimeFourierTransformClass(unittest.TestCase):
         self.assertTrue(np.allclose(result.fft_window,
                                     np.hanning(2048) / 32767))
         self.assertTrue(np.allclose(result.bin_frequencies,
-                                    fft_frequencies(1024, 22050)))
+                                    fft_frequencies(1024, 44100)))
         # properties
         self.assertTrue(result.num_frames == 281)
         self.assertTrue(result.num_bins == 1024)
@@ -215,7 +215,7 @@ class ShortTimeFourierTransformClass(unittest.TestCase):
         self.assertTrue(result.include_nyquist is True)
         self.assertTrue(np.allclose(result.window, np.hanning(2048)))
         self.assertTrue(np.allclose(result.bin_frequencies,
-                                    fft_frequencies(1025, 22050)))
+                                    fft_frequencies(1025, 44100)))
 
 
 class ShortTimeFourierTransformProcessorClass(unittest.TestCase):
@@ -237,7 +237,7 @@ class ShortTimeFourierTransformProcessorClass(unittest.TestCase):
         # attributes
         self.assertTrue(result.shape == (281, 1024))
         self.assertTrue(np.allclose(result.bin_frequencies,
-                                    fft_frequencies(1024, 22050)))
+                                    fft_frequencies(1024, 44100)))
         self.assertIsInstance(result, ShortTimeFourierTransform)
         self.assertTrue(result.fft_size == 2048)
         self.assertTrue(np.allclose(result.fft_window,
@@ -266,7 +266,7 @@ class PhaseClass(unittest.TestCase):
         # attributes
         self.assertTrue(result.shape == (281, 1024))
         self.assertTrue(np.allclose(result.bin_frequencies,
-                                    fft_frequencies(1024, 22050)))
+                                    fft_frequencies(1024, 44100)))
         # properties
         self.assertTrue(result.num_bins == 1024)
         self.assertTrue(result.num_frames == 281)
@@ -301,7 +301,7 @@ class LocalGroupDelayClass(unittest.TestCase):
         # attributes
         self.assertTrue(result.shape == (281, 1024))
         self.assertTrue(np.allclose(result.bin_frequencies,
-                                    fft_frequencies(1024, 22050)))
+                                    fft_frequencies(1024, 44100)))
         # properties
         self.assertTrue(result.num_bins == 1024)
         self.assertTrue(result.num_frames == 281)

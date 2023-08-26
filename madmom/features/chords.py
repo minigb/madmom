@@ -193,7 +193,7 @@ class CNNChordFeatureProcessor(SequentialProcessor):
         from ..models import CHORDS_CNN_FEAT
 
         # spectrogram computation
-        sig = SignalProcessor(num_channels=1, sample_rate=22050)
+        sig = SignalProcessor(num_channels=1, sample_rate=44100)
         frames = FramedSignalProcessor(frame_size=8192, fps=10)
         stft = ShortTimeFourierTransformProcessor()  # caching FFT window
         spec = LogarithmicFilteredSpectrogramProcessor(
